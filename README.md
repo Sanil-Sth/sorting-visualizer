@@ -1,8 +1,10 @@
 # Sorting Algorithm Visualizer
 
-An interactive, step-by-step visualizer for 7 classic sorting algorithms — built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools, just drop it in a browser and go.
+An interactive, step-by-step visualizer for 7 classic sorting algorithms — built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools.
 
 **Live Demo →** [sorting-visualizer-sanil.vercel.app](https://sorting-visualizer-sanil.vercel.app)
+
+![Sorting Visualizer Preview](assets/preview.png)
 
 ---
 
@@ -22,21 +24,23 @@ An interactive, step-by-step visualizer for 7 classic sorting algorithms — bui
 
 ## Features
 
-- **Step-by-step playback** — play, pause, go forward or backward through every operation
-- **Color-coded bars** — distinct colors for comparisons, swaps, pivots, active window, and sorted elements
-- **Call stack panel** — visualizes recursive frames (Merge, Quick, Heap) and pass/gap labels for iterative algorithms
-- **Live descriptions** — each step shows a plain-English explanation of what's happening
-- **4 presets** — Random, Sorted, Reverse, Nearly Sorted to explore best/worst cases
-- **Custom array input** — type your own comma-separated values
-- **Adjustable speed** — from 800ms (slow study) down to 20ms (fast demo)
-- **Resizable panels** — drag the divider between controls and chart
-- **Mobile responsive** — stacked layout on phones, adapted for tablets
+**Playback controls** — play, pause, step forward, and step backward through every operation at speeds from 800ms down to 20ms.
+
+**Color-coded bars** — distinct colors for comparisons, swaps, pivots, active window, and sorted elements give you an immediate visual read of what's happening.
+
+**Call stack panel** — visualizes recursive frames for Merge, Quick, and Heap sort; shows pass/gap labels for iterative algorithms.
+
+**Live descriptions** — each step includes a plain-English explanation of the current operation.
+
+**Input options** — choose from 4 presets (Random, Sorted, Reverse, Nearly Sorted) or type your own comma-separated values to explore specific cases.
+
+**Resizable panels** — drag the divider between controls and chart. Fully responsive on mobile and tablet.
 
 ---
 
 ## Getting Started
 
-No install required. Clone the repo and open `index.html` in your browser.
+No install required. Clone the repo and open `index.html` directly in your browser:
 
 ```bash
 git clone https://github.com/Sanil-Sth/sorting-visualizer.git
@@ -44,7 +48,7 @@ cd sorting-visualizer
 # open index.html in your browser
 ```
 
-Or with a local server (recommended to avoid any CORS issues):
+Or serve it locally to avoid any CORS issues:
 
 ```bash
 npx serve .
@@ -92,18 +96,21 @@ sorting-visualizer/
 
 ## How It Works
 
-Each algorithm file exposes a single `recordSort(array)` function that runs the full sort on a copy of the array and returns an array of **step objects** — one per operation. No actual DOM manipulation happens inside the algorithms.
+Each algorithm file exposes a single `recordSort(array)` function that runs the full sort on a copy of the array and returns an array of step objects — one per operation. No DOM manipulation happens inside the algorithm logic itself.
 
-The renderer then replays these steps, updating bar heights, colors, and labels purely from the recorded snapshots. This makes stepping forward *and* backward trivial — it's just array indexing.
+The renderer replays these steps, updating bar heights, colors, and labels from the recorded snapshots. This makes stepping forward *and* backward trivial — it's just array indexing.
 
-Each step carries:
-- `type` — the operation (`compare`, `swap`, `sorted`, `pivot_set`, `shift`, `select`, ...)
-- `indices` — which bars are involved
-- `arraySnapshot` — full array state at that moment
-- `sortedIndices` — all permanently sorted positions so far
-- `activeWindow` — the current working subarray range
-- `callStack` — recursive frames or pass labels for the sidebar
-- `description` — plain-English explanation
+Each step object carries:
+
+| Field | Description |
+|---|---|
+| `type` | The operation (`compare`, `swap`, `sorted`, `pivot_set`, `shift`, ...) |
+| `indices` | Which bars are involved |
+| `arraySnapshot` | Full array state at that moment |
+| `sortedIndices` | All permanently sorted positions so far |
+| `activeWindow` | The current working subarray range |
+| `callStack` | Recursive frames or pass labels for the sidebar |
+| `description` | Plain-English explanation of the step |
 
 ---
 

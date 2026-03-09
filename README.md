@@ -2,7 +2,7 @@
 
 An interactive, step-by-step visualizer for 7 classic sorting algorithms — built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools, just drop it in a browser and go.
 
-**Live Demo →** [sorting-visualizer-sanil.vercel.app](https://sorting-visualizer-sanil.vercel.app) *(update with your link)*
+**Live Demo →** [sorting-visualizer-sanil.vercel.app](https://sorting-visualizer-sanil.vercel.app) 
 
 ![Sorting Visualizer Preview](https://quick-sort-visualizer-sanil.vercel.app/preview.png)
 

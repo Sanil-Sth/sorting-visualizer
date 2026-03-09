@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorting Visualizer — Interactive Algorithm Suite</title>
+  <meta name="description" content="Interactive step-by-step sorting algorithm visualizer suite. Explore Bubble, Selection, Insertion, Shell, Merge, Quick, and Heap Sort with color-coded animations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+</head>
+<body>
+<div class="landing-wrapper">
+
+  <!-- ── HEADER ── -->
+  <header class="landing-header" role="banner">
+    <div class="landing-brand">
+      <h1 class="landing-title"><span>Sorting</span> Visualizer</h1>
+      <span class="landing-badge">7 Algorithms</span>
+    </div>
+    <a
+      href="https://github.com/Sanil-Sth"
+      class="landing-header-link"
+      aria-label="View source on GitHub"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+      </svg>
+      GitHub
+    </a>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="landing-hero" aria-label="Introduction">
+    <p class="landing-hero-eyebrow">Interactive Algorithm Learning</p>
+    <h2 class="landing-hero-title">Watch Algorithms <span>Sort</span> in Real Time</h2>
+    <p class="landing-hero-subtitle">Step through 7 classic sorting algorithms with color-coded bar charts, call stack displays, and full playback controls. Perfect for learning data structures and algorithms.</p>
+  </section>
+
+  <!-- ── ALGORITHM CARDS ── -->
+  <main class="landing-section" aria-label="Algorithm selection">
+    <div class="landing-section-header">
+      <span class="landing-section-label">Choose an Algorithm</span>
+      <div class="landing-section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="algo-grid" role="list">
+
+      <!-- Bubble Sort -->
+      <article class="algo-card" role="listitem">
+        <div class="algo-card-header">
+          <h3 class="algo-card-name"><span>Bubble</span> Sort</h3>
+          <span class="algo-card-badge badge-comparison">Comparison</span>
+        </div>
+        <p class="algo-card-desc">Repeatedly compares adjacent elements and swaps them if out of order, bubbling the largest value to the end each pass.</p>
+        <div class="algo-complexity" role="table" aria-label="Time and space complexity">
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Best</span>
+            <span class="complexity-value good">O(n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Average</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Worst</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Space</span>
+            <span class="complexity-value space">O(1)</span>
+          </div>
+        </div>
+        <div class="algo-card-footer">
+          <a href="bubble_sort.html" class="btn-visualize" aria-label="Visualize Bubble Sort">Visualize →</a>
+        </div>
+      </article>
+
+      <!-- Selection Sort -->
+      <article class="algo-card" role="listitem">
+        <div class="algo-card-header">
+          <h3 class="algo-card-name"><span>Selection</span> Sort</h3>
+          <span class="algo-card-badge badge-comparison">Comparison</span>
+        </div>
+        <p class="algo-card-desc">Finds the minimum element in the unsorted portion and places it at the beginning, growing the sorted section one element at a time.</p>
+        <div class="algo-complexity">
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Best</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Average</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Worst</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Space</span>
+            <span class="complexity-value space">O(1)</span>
+          </div>
+        </div>
+        <div class="algo-card-footer">
+          <a href="selection_sort.html" class="btn-visualize" aria-label="Visualize Selection Sort">Visualize →</a>
+        </div>
+      </article>
+
+      <!-- Insertion Sort -->
+      <article class="algo-card" role="listitem">
+        <div class="algo-card-header">
+          <h3 class="algo-card-name"><span>Insertion</span> Sort</h3>
+          <span class="algo-card-badge badge-comparison">Comparison</span>
+        </div>
+        <p class="algo-card-desc">Builds a sorted array one element at a time by inserting each new element into its correct position within the already-sorted portion.</p>
+        <div class="algo-complexity">
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Best</span>
+            <span class="complexity-value good">O(n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Average</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Worst</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Space</span>
+            <span class="complexity-value space">O(1)</span>
+          </div>
+        </div>
+        <div class="algo-card-footer">
+          <a href="insertion_sort.html" class="btn-visualize" aria-label="Visualize Insertion Sort">Visualize →</a>
+        </div>
+      </article>
+
+      <!-- Shell Sort -->
+      <article class="algo-card" role="listitem">
+        <div class="algo-card-header">
+          <h3 class="algo-card-name"><span>Shell</span> Sort</h3>
+          <span class="algo-card-badge badge-comparison">Comparison</span>
+        </div>
+        <p class="algo-card-desc">An improved insertion sort that compares elements separated by a shrinking gap, allowing faster long-distance element movement.</p>
+        <div class="algo-complexity">
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Best</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Average</span>
+            <span class="complexity-value ok">O(n log² n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Worst</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Space</span>
+            <span class="complexity-value space">O(1)</span>
+          </div>
+        </div>
+        <div class="algo-card-footer">
+          <a href="shell_sort.html" class="btn-visualize" aria-label="Visualize Shell Sort">Visualize →</a>
+        </div>
+      </article>
+
+      <!-- Merge Sort -->
+      <article class="algo-card" role="listitem">
+        <div class="algo-card-header">
+          <h3 class="algo-card-name"><span>Merge</span> Sort</h3>
+          <span class="algo-card-badge badge-divide">Divide &amp; Conquer</span>
+        </div>
+        <p class="algo-card-desc">Recursively divides the array in half, sorts each half, then merges them back together — guaranteeing O(n log n) performance always.</p>
+        <div class="algo-complexity">
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Best</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Average</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Worst</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Space</span>
+            <span class="complexity-value bad">O(n)</span>
+          </div>
+        </div>
+        <div class="algo-card-footer">
+          <a href="merge_sort.html" class="btn-visualize" aria-label="Visualize Merge Sort">Visualize →</a>
+        </div>
+      </article>
+
+      <!-- Quick Sort -->
+      <article class="algo-card" role="listitem">
+        <div class="algo-card-header">
+          <h3 class="algo-card-name"><span>Quick</span> Sort</h3>
+          <span class="algo-card-badge badge-divide">Divide &amp; Conquer</span>
+        </div>
+        <p class="algo-card-desc">Picks a pivot element and partitions the array around it, recursively sorting each partition. The fastest in practice on average.</p>
+        <div class="algo-complexity">
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Best</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Average</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Worst</span>
+            <span class="complexity-value bad">O(n²)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Space</span>
+            <span class="complexity-value ok">O(log n)</span>
+          </div>
+        </div>
+        <div class="algo-card-footer">
+          <a href="quick_sort.html" class="btn-visualize" aria-label="Visualize Quick Sort">Visualize →</a>
+        </div>
+      </article>
+
+      <!-- Heap Sort -->
+      <article class="algo-card" role="listitem">
+        <div class="algo-card-header">
+          <h3 class="algo-card-name"><span>Heap</span> Sort</h3>
+          <span class="algo-card-badge badge-divide">Divide &amp; Conquer</span>
+        </div>
+        <p class="algo-card-desc">Builds a max-heap from the array, then repeatedly extracts the maximum element and places it at the end to build the sorted result.</p>
+        <div class="algo-complexity">
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Best</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Average</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Worst</span>
+            <span class="complexity-value ok">O(n log n)</span>
+          </div>
+          <div class="algo-complexity-cell">
+            <span class="complexity-label">Space</span>
+            <span class="complexity-value space">O(1)</span>
+          </div>
+        </div>
+        <div class="algo-card-footer">
+          <a href="heap_sort.html" class="btn-visualize" aria-label="Visualize Heap Sort">Visualize →</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="landing-footer" role="contentinfo">
+    <span>Built by</span>
+    <a href="https://github.com/Sanil-Sth" target="_blank" rel="noopener noreferrer">Sanil Sthapit</a>
+    <span>·</span>
+    <span>Open source on GitHub</span>
+  </footer>
+
+</div>
+</body>
+</html>

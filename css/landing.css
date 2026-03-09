@@ -1,0 +1,364 @@
+/* ── LANDING PAGE STYLES ── */
+/* Styles specific to index.html only — no overrides to shared tokens */
+
+/* ── SHELL ── */
+.landing-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+/* ── HEADER ── */
+.landing-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 var(--space-8);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-main);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+}
+
+.landing-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.landing-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+.landing-title span {
+  color: var(--accent-orange);
+}
+
+.landing-badge {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 2px var(--space-2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+}
+
+.landing-header-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-family: var(--font-display);
+  transition: color var(--transition-ui);
+}
+
+.landing-header-link:hover {
+  color: var(--text-primary);
+}
+
+/* ── HERO SECTION ── */
+.landing-hero {
+  text-align: center;
+  padding: var(--space-12) var(--space-8) var(--space-8);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.landing-hero-eyebrow {
+  font-size: var(--text-xs);
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: var(--font-display);
+  margin-bottom: var(--space-4);
+}
+
+.landing-hero-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  margin-bottom: var(--space-4);
+}
+
+.landing-hero-title span {
+  color: var(--accent-orange);
+}
+
+.landing-hero-subtitle {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── SECTION LABEL ── */
+.landing-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-8) var(--space-12);
+  width: 100%;
+}
+
+.landing-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.landing-section-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: var(--font-display);
+}
+
+.landing-section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* ── ALGORITHM CARDS GRID ── */
+.algo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+@media (max-width: 900px) {
+  .algo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .algo-grid {
+    grid-template-columns: 1fr;
+  }
+  .landing-hero {
+    padding: var(--space-8) var(--space-4) var(--space-6);
+  }
+  .landing-section {
+    padding: 0 var(--space-4) var(--space-8);
+  }
+  .landing-header {
+    padding: 0 var(--space-4);
+  }
+}
+
+/* ── SINGLE ALGORITHM CARD ── */
+.algo-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: border-color var(--transition-ui), transform var(--transition-ui), box-shadow var(--transition-ui);
+  position: relative;
+  overflow: hidden;
+}
+
+.algo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-orange);
+  opacity: 0;
+  transition: opacity var(--transition-ui);
+}
+
+.algo-card:hover {
+  border-color: var(--accent-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-orange);
+}
+
+.algo-card:hover::before {
+  opacity: 1;
+}
+
+/* ── CARD HEADER ── */
+.algo-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.algo-card-name {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+.algo-card-name span {
+  color: var(--accent-orange);
+}
+
+.algo-card-badge {
+  font-size: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.badge-comparison {
+  background: rgba(52, 152, 219, 0.15);
+  color: var(--bar-active);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+.badge-divide {
+  background: rgba(231, 76, 60, 0.12);
+  color: var(--bar-pivot);
+  border: 1px solid rgba(231, 76, 60, 0.25);
+}
+
+/* ── CARD DESCRIPTION ── */
+.algo-card-desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ── COMPLEXITY TABLE ── */
+.algo-complexity {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.algo-complexity-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.complexity-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-display);
+}
+
+.complexity-value {
+  font-size: var(--text-xs);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.complexity-value.good   { color: var(--bar-sorted); }
+.complexity-value.ok     { color: var(--bar-comparing); }
+.complexity-value.bad    { color: var(--bar-pivot); }
+.complexity-value.space  { color: var(--accent-orange); }
+
+/* ── CARD FOOTER ── */
+.algo-card-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-4);
+}
+
+.btn-visualize {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background var(--transition-ui), color var(--transition-ui), border-color var(--transition-ui);
+  text-decoration: none;
+}
+
+.btn-visualize:hover {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+  color: #fff;
+}
+
+/* ── FOOTER ── */
+.landing-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--space-5) var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-family: var(--font-display);
+}
+
+.landing-footer a {
+  color: var(--accent-orange);
+  transition: opacity var(--transition-ui);
+}
+
+.landing-footer a:hover {
+  opacity: 0.8;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes landingFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.landing-hero { animation: landingFadeUp 500ms ease both; }
+.landing-section { animation: landingFadeUp 500ms 100ms ease both; }
+
+.algo-card {
+  animation: landingFadeUp 400ms ease both;
+}
+
+.algo-card:nth-child(1) { animation-delay: 80ms;  }
+.algo-card:nth-child(2) { animation-delay: 120ms; }
+.algo-card:nth-child(3) { animation-delay: 160ms; }
+.algo-card:nth-child(4) { animation-delay: 200ms; }
+.algo-card:nth-child(5) { animation-delay: 240ms; }
+.algo-card:nth-child(6) { animation-delay: 280ms; }
+.algo-card:nth-child(7) { animation-delay: 320ms; }

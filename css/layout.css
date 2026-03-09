@@ -1,0 +1,352 @@
+/* ── LAYOUT ── */
+/* Two-column viewport-fit layout: controls left | resizer | chart right */
+
+/* ── APP SHELL ── */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ── ZONE 1: HEADER (full-width sticky) ── */
+#app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 var(--space-8);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  background-color: var(--bg-main);
+  z-index: var(--z-header);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.header-title span {
+  color: var(--accent-orange);
+}
+
+.header-badge {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 2px var(--space-2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  transition: color var(--transition-ui);
+}
+
+.header-link:hover {
+  color: var(--text-primary);
+}
+
+/* ── BODY SPLIT: controls left | resizer | chart right ── */
+/* grid-template-columns is set by resizer.js after first paint */
+.body-split {
+  display: grid;
+  grid-template-columns: 460px 6px 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── DRAG RESIZER HANDLE ── */
+#resizer {
+  order: 2;
+  width: 6px;
+  cursor: col-resize;
+  background: var(--border-subtle);
+  transition: background var(--transition-ui);
+  position: relative;
+  flex-shrink: 0;
+  z-index: var(--z-tooltip);
+}
+
+#resizer::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background: var(--text-muted);
+  opacity: 0.4;
+  transition: opacity var(--transition-ui), height var(--transition-ui);
+}
+
+#resizer:hover,
+#resizer.dragging {
+  background: var(--accent-orange);
+}
+
+#resizer:hover::after,
+#resizer.dragging::after {
+  opacity: 1;
+  height: 48px;
+  background: #fff;
+}
+
+/* ── LEFT PANEL: controls ── */
+#controls {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-6);
+  overflow-y: auto;
+  background: var(--bg-main);
+  min-height: 0;
+  min-width: 260px;
+}
+
+/* Thin custom scrollbar for controls panel */
+#controls::-webkit-scrollbar       { width: 4px; }
+#controls::-webkit-scrollbar-track { background: transparent; }
+#controls::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: var(--radius-pill);
+}
+
+/* ── CONTROL GROUP: label + content ── */
+.controls-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.controls-group-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Preset buttons — 2×2 grid with generous gaps */
+.preset-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Playback — single row, Play stretches to fill */
+.playback-row {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.playback-row .btn-primary {
+  flex: 1;
+}
+
+/* Horizontal separator between sections */
+.controls-sep {
+  height: 1px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
+/* ── STEP INFO ── */
+#info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.step-description {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  min-height: 20px;
+  line-height: 1.7;
+}
+
+.step-counter {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.step-counter strong {
+  color: var(--accent-orange);
+}
+
+/* ── LEGEND — pinned to bottom via margin-top: auto ── */
+#legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.legend-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3) var(--space-4);
+}
+
+.legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.legend-chip-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── RIGHT PANEL: bar chart fills full height ── */
+#canvas {
+  order: 3;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  min-height: 0;
+  min-width: 300px;
+  background: var(--bg-main);
+}
+
+#bar-chart {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+}
+
+/* ── DRAGGING STATE — applied to body ── */
+body.is-resizing {
+  cursor: col-resize;
+  user-select: none;
+}
+
+body.is-resizing #controls,
+body.is-resizing #canvas {
+  pointer-events: none;
+}
+
+/* ── MOBILE LAYOUT (≤ 600px) ── */
+@media (max-width: 600px) {
+
+  /* App shell scrolls naturally on mobile — no fixed viewport height */
+  .app-wrapper {
+    height: auto;
+    overflow: visible;
+    min-height: 100vh;
+  }
+
+  /* Header shrinks padding and font */
+  #app-header {
+    padding: 0 var(--space-4);
+    height: 52px;
+  }
+
+  .header-title {
+    font-size: var(--text-lg);
+  }
+
+  .header-badge {
+    display: none;
+  }
+
+  /* Stack panels vertically: controls on top, chart below */
+  .body-split {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Hide the drag resizer entirely on mobile */
+  #resizer {
+    display: none;
+  }
+
+  /* Controls panel — full width, natural height, no overflow scroll */
+  #controls {
+    order: 1;
+    min-width: unset;
+    min-height: unset;
+    overflow-y: visible;
+    padding: var(--space-5) var(--space-4);
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  /* Legend unpins from bottom — flows naturally in the controls column */
+  #legend {
+    margin-top: var(--space-4);
+  }
+
+  /* Preset grid stays 2 cols — fits fine on mobile */
+  .preset-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Playback row wraps if screen is very narrow */
+  .playback-row {
+    flex-wrap: wrap;
+  }
+
+  /* Canvas panel — full width, fixed height for the chart */
+  #canvas {
+    order: 2;
+    min-width: unset;
+    min-height: unset;
+    padding: var(--space-4);
+    height: 360px;
+    flex-shrink: 0;
+  }
+
+  /* Bar chart fills the fixed canvas height */
+  #bar-chart {
+    height: 100%;
+    min-height: unset;
+  }
+
+  /* Custom input fills full width on mobile */
+  .custom-input {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .custom-input-row {
+    flex-wrap: wrap;
+  }
+}

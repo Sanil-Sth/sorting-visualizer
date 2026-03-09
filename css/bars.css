@@ -1,0 +1,127 @@
+/* ── BARS ── */
+/* Bar chart container, bar elements, value labels */
+
+/* ── BAR CHART CONTAINER ── */
+#bar-chart {
+  width: 100%;
+  height: var(--bar-canvas-height);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--bar-gap);
+  padding: var(--space-4) var(--space-6) var(--space-5);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* ── CANVAS GRID LINES ── */
+#bar-chart::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to top, var(--border-subtle) 1px, transparent 1px);
+  background-size: 100% 25%;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ── INDIVIDUAL BAR ── */
+.bar {
+  flex: 1;
+  min-width: 12px;
+  max-width: 80px;
+  min-height: var(--bar-min-height);
+  border-radius: 3px 3px 0 0;
+  background-color: var(--bar-idle);
+  position: relative;
+  transition:
+    height var(--transition-height),
+    background-color var(--transition-color);
+  will-change: height, background-color;
+  cursor: default;
+  box-shadow: var(--shadow-bar);
+}
+
+/* ── BAR TOP GLOW ── */
+.bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+/* ── BAR VALUE LABEL ── */
+.bar-label {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-xs);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  z-index: var(--z-bar-label);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-ui);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.02em;
+}
+
+/* Show labels on hover always */
+.bar:hover .bar-label {
+  opacity: 1;
+}
+
+/* Always show labels when class is present */
+.bars-show-labels .bar-label {
+  opacity: 1;
+}
+
+/* Container query: hide label when bar is too narrow to fit text */
+.bar {
+  container-type: inline-size;
+}
+
+@container (max-width: 28px) {
+  .bar-label {
+    opacity: 0 !important;
+  }
+}
+
+/* ── CANVAS EMPTY STATE ── */
+.canvas-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  pointer-events: none;
+}
+
+/* ── ACTIVE WINDOW INDICATOR ── */
+.partition-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: var(--bar-active);
+  opacity: 0.5;
+  border-radius: var(--radius-pill);
+  transition: left var(--transition-color), width var(--transition-color);
+  pointer-events: none;
+}
